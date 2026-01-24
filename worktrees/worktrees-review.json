@@ -1,0 +1,21 @@
+{
+  "setup-worktree-unix": [
+    "npm ci || pnpm install || yarn install",
+    "cp $ROOT_WORKTREE_PATH/.env .env 2>/dev/null || true",
+    "npm run lint:install || pnpm lint:install || yarn lint:install || true",
+    "npm run security:audit || pnpm security:audit || yarn security:audit || true",
+    "npm run lint || pnpm lint || yarn lint || true",
+    "npm run type-check || pnpm type-check || yarn type-check || true"
+  ],
+  "setup-worktree-windows": [
+    "npm ci || pnpm install || yarn install",
+    "copy %ROOT_WORKTREE_PATH%\\.env .env 2>nul || echo.",
+    "npm run lint:install || pnpm lint:install || yarn lint:install || echo.",
+    "npm run security:audit || pnpm security:audit || yarn security:audit || echo.",
+    "npm run lint || pnpm lint || yarn lint || echo.",
+    "npm run type-check || pnpm type-check || yarn type-check || echo."
+  ],
+  "setup-worktree": [
+    "echo 'Review worktree: Installing dependencies, linting tools, security audit, and type checking'"
+  ]
+}

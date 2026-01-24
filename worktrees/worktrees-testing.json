@@ -1,0 +1,19 @@
+{
+  "setup-worktree-unix": [
+    "npm ci || pnpm install || yarn install",
+    "cp $ROOT_WORKTREE_PATH/.env .env 2>/dev/null || true",
+    "cp $ROOT_WORKTREE_PATH/.env.test .env.test 2>/dev/null || true",
+    "npm run test:setup || pnpm test:setup || yarn test:setup || true",
+    "npm run test:db:setup || pnpm test:db:setup || yarn test:db:setup || true"
+  ],
+  "setup-worktree-windows": [
+    "npm ci || pnpm install || yarn install",
+    "copy %ROOT_WORKTREE_PATH%\\.env .env 2>nul || echo.",
+    "copy %ROOT_WORKTREE_PATH%\\.env.test .env.test 2>nul || echo.",
+    "npm run test:setup || pnpm test:setup || yarn test:setup || echo.",
+    "npm run test:db:setup || pnpm test:db:setup || yarn test:db:setup || echo."
+  ],
+  "setup-worktree": [
+    "echo 'Testing worktree: Installing dependencies, setting up test environment and test database'"
+  ]
+}

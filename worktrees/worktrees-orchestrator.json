@@ -1,0 +1,19 @@
+{
+  "setup-worktree-unix": [
+    "npm ci || pnpm install || yarn install",
+    "cp $ROOT_WORKTREE_PATH/.env .env 2>/dev/null || true",
+    "mkdir -p agents",
+    "if [ ! -f agents/COORDINATION_BOARD.md ]; then cp $ROOT_WORKTREE_PATH/.cursor/worktrees-examples/COORDINATION_BOARD.md agents/COORDINATION_BOARD.md 2>/dev/null || echo '# Coordination Board\\n\\n## Goals\\n\\n## Changes\\n\\n## Next Owner\\n\\n## Status\\n' > agents/COORDINATION_BOARD.md; fi",
+    "npm run build || pnpm build || yarn build || true"
+  ],
+  "setup-worktree-windows": [
+    "npm ci || pnpm install || yarn install",
+    "copy %ROOT_WORKTREE_PATH%\\.env .env 2>nul || echo.",
+    "if not exist agents mkdir agents",
+    "if not exist agents\\COORDINATION_BOARD.md (copy %ROOT_WORKTREE_PATH%\\.cursor\\worktrees-examples\\COORDINATION_BOARD.md agents\\COORDINATION_BOARD.md 2>nul || echo # Coordination Board > agents\\COORDINATION_BOARD.md)",
+    "npm run build || pnpm build || yarn build || echo."
+  ],
+  "setup-worktree": [
+    "echo 'Orchestrator worktree setup - install dependencies, create coordination board structure'"
+  ]
+}

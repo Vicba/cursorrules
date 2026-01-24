@@ -1,0 +1,23 @@
+{
+  "setup-worktree-unix": [
+    "npm ci || pnpm install || yarn install",
+    "cp $ROOT_WORKTREE_PATH/.env .env 2>/dev/null || true",
+    "cp $ROOT_WORKTREE_PATH/.env.local .env.local 2>/dev/null || true",
+    "npm run db:migrate || pnpm db:migrate || yarn db:migrate || true",
+    "npm run db:seed || pnpm db:seed || yarn db:seed || true",
+    "npm run build || pnpm build || yarn build || true",
+    "npm run dev:setup || pnpm dev:setup || yarn dev:setup || true"
+  ],
+  "setup-worktree-windows": [
+    "npm ci || pnpm install || yarn install",
+    "copy %ROOT_WORKTREE_PATH%\\.env .env 2>nul || echo.",
+    "copy %ROOT_WORKTREE_PATH%\\.env.local .env.local 2>nul || echo.",
+    "npm run db:migrate || pnpm db:migrate || yarn db:migrate || echo.",
+    "npm run db:seed || pnpm db:seed || yarn db:seed || echo.",
+    "npm run build || pnpm build || yarn build || echo.",
+    "npm run dev:setup || pnpm dev:setup || yarn dev:setup || echo."
+  ],
+  "setup-worktree": [
+    "echo 'Feature development worktree: Installing dependencies, running migrations, seeding DB, building, and setting up dev environment'"
+  ]
+}
